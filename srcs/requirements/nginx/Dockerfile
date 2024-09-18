@@ -6,7 +6,7 @@ RUN mkdir -p /etc/nginx/ssl
 
 RUN mkdir -p /var/run/nginx 
 
-COPY /conf/nginx.conf /etc/nginx/nginx.conf
+COPY /conf/nginx.conf etc/nginx/sites-available/default
 
 RUN chmod 755 /var/www/html
 
