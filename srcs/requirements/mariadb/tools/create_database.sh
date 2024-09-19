@@ -6,11 +6,11 @@ sleep 5
 
 mariadb -u root -e "CREATE DATABASE IF NOT EXISTS '$DB_NAME';"
 
-mariadb -u root -e "CREATE USER '$USER_NAME'@'%' IDENTIFIED BY '$USER_PASSWORD';"
+mariadb -u root -e "CREATE USER '$DB_USER_NAME'@'%' IDENTIFIED BY '$DB_USER_PASSWORD';"
 
-mariadb -u root -e "CREATE USER '$USER2_NAME'@'%' IDENTIFIED BY '$USER2_PASSWORD';"
+mariadb -u root -e "CREATE USER '$DB_USER2_NAME'@'%' IDENTIFIED BY '$DB_USER2_PASSWORD';"
 
-mariadb -u root -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$USER_NAME'@'%';"
+mariadb -u root -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER_NAME'@'%';"
 
 mariadb -u root -e "FLUSH PRIVILEGES;"
 
