@@ -1,0 +1,67 @@
+
+services:
+  
+  mariadb:
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    image: mariadb:v1.0.0
+    container_name: mariadb
+    env_file:
+      - ./.env
+    volumes:
+      - db-vol:/var/lib/mysql
+    restart: on-failure
+    networks:
+      - all
+
+  wordpress:
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    image: wordpress:v1.0.0
+    container_name: wordpress
+    env_file:
+      - ./.env
+    volumes:
+      - wp-vol:/var/www/wordpress
+    depends_on:
+      - mariadb
+    restart: on-failure
+    networks:
+      - all
+
+  ngnix:
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    image: nginx:v1.0.0
+    container_name: ngnix
+    ports:
+      - 443:443
+    env_file:
+      - ./.env
+    volumes:
+      - wp-vol:/var/www/wordpress
+    depends_on:
+      - wordpress
+    restart: on-failure
+    networks:
+      - all
+
+networks:
+  all:
+    driver: bridge
+
+
+volumes:
+  wp-vol:
+    driver_opts:
+      o: bind
+      type: none
+      device: /Users/_kacimo_/ael-kace/data/wp-data
+  db-vol:
+    driver_opts:
+      o: bind
+      type: none
+      device: /Users/_kacimo_/ael-kace/data/db-data
