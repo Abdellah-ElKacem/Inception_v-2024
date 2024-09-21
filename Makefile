@@ -6,13 +6,9 @@ VOL_WORDPRESS_RMV= rm -rf /Users/_kacimo_/ael-kace/data/wp-data
 VOL_DATA_BASE_RMV= rm -rf /Users/_kacimo_/ael-kace/data/dp-data
 
 all:
-	$(VOL_WORDPRESS) $(VOL_DATA_BASE)
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up
+	$(VOL_WORDPRESS) && $(VOL_DATA_BASE)
+	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up --build
 
 clean:
-	$(VOL_WORDPRESS_RMV) $(VOL_DATA_BASE_RMV)
+	$(VOL_WORDPRESS_RMV) && $(VOL_DATA_BASE_RMV)
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
-	docker rm -f `docker ps -qa` || true
-	docker rmi -f `docker images -qa` || true
-	docker volume rm `docker volume ls -q` || true
-	docker network rm `docker network ls -q` || true
