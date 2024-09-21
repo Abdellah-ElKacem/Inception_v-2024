@@ -1,13 +1,14 @@
 #!/bin/bash
 cd $WP_PATH
+
 wp core download --allow-root
 
-mv wp-config-sample.php wp-config.php
+# mv wp-config-sample.php wp-config.php
 
 wp config create	--allow-root \
 					--dbname=$DB_NAME \
-					--dbuser=$USER_NAME \
-					--dbpass=$USER_PASSWORD \
+					--dbuser=$DB_USER_NAME \
+					--dbpass=$DB_USER_PASSWORD \
 					--dbhost=$DB_HOST:3306
 
 wp core install     --allow-root \

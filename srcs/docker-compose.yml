@@ -54,15 +54,14 @@ networks:
   all:
     name : all
 
-
 volumes:
   wp-vol:
     driver_opts:
       o: bind
       type: none
-      device: /Users/_kacimo_/ael-kace/data/wp-data
+      device: /Users/ael-kace/aelkace/data/wp-data
   db-vol:
     driver_opts:
       o: bind
       type: none
-      device: /Users/_kacimo_/ael-kace/data/db-data
+      device: /Users/ael-kace/aelkace/data/db-data
