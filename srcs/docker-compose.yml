@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   
   mariadb:
@@ -59,9 +57,9 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /Users/ael-kace/aelkace/data/wp-data
+      device: /home/ael-kace/data/wp-data
   db-vol:
     driver_opts:
       o: bind
       type: none
-      device: /Users/ael-kace/aelkace/data/db-data
+      device: /home/ael-kace/data/db-data

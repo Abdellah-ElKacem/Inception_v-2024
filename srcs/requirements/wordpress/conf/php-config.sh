@@ -3,7 +3,7 @@ cd $WP_PATH
 
 wp core download --allow-root
 
-# mv wp-config-sample.php wp-config.php
+sleep 10
 
 wp config create	--allow-root \
 					--dbname=$DB_NAME \
